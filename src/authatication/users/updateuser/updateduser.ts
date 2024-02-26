@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const updateForm = document.getElementById('update-form');
-
-    updateForm.addEventListener('submit', async (event) => {
+    const updateButton = document.getElementById('update-button');
+    updateButton.addEventListener('click', async (event) => {
         event.preventDefault();
+        const userIdInput = document.getElementById('user-id') as HTMLInputElement;
+        const userId = userIdInput.value.trim();
 
         const userNameInput = document.getElementById('user-name') as HTMLInputElement;
         const newUsername = userNameInput.value.trim();
@@ -14,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const response = await fetch(`http://localhost:8765/users/${userId}`, {
-                method: 'PUT', // Assuming your backend API endpoint uses PUT for updating
+                method: 'PATCH', // Assuming your backend API endpoint uses PUT for updating
+                mode: 'cors',   
                 credentials: 'include', // Include cookies in the request
                 headers: {
                     'Content-Type': 'application/json'

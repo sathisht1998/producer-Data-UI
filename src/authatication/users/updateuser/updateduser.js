@@ -36,13 +36,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var _this = this;
 document.addEventListener('DOMContentLoaded', function () {
-    var updateForm = document.getElementById('update-form');
-    updateForm.addEventListener('submit', function (event) { return __awaiter(_this, void 0, void 0, function () {
-        var userNameInput, newUsername, response, errorMessage, error_1;
+    var updateButton = document.getElementById('update-button');
+    updateButton.addEventListener('click', function (event) { return __awaiter(_this, void 0, void 0, function () {
+        var userIdInput, userId, userNameInput, newUsername, response, errorMessage, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     event.preventDefault();
+                    userIdInput = document.getElementById('user-id');
+                    userId = userIdInput.value.trim();
                     userNameInput = document.getElementById('user-name');
                     newUsername = userNameInput.value.trim();
                     if (!newUsername) {
@@ -52,8 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 6, , 7]);
-                    return [4 /*yield*/, fetch('http://localhost:8765/user/update', {
-                            method: 'PUT', // Assuming your backend API endpoint uses PUT for updating
+                    return [4 /*yield*/, fetch("http://localhost:8765/users/".concat(userId), {
+                            method: 'PATCH', // Assuming your backend API endpoint uses PUT for updating
+                            mode: 'cors',
                             credentials: 'include', // Include cookies in the request
                             headers: {
                                 'Content-Type': 'application/json'
