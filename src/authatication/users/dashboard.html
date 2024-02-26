@@ -43,14 +43,19 @@
     <div class="container">
         <h2>Dashboard</h2>
         <button class="button" id="get-all-users-button">All Users</button>
-        <button class="button" onclick="window.location.href='delete.html'">Delete</button>
-        <button class="button" onclick="window.location.href='update.html'">Update</button>
+        <button class="button" id="delete-button">Delete</button>
+        <button class="button" id="update-profile-button">Update</button>
+
+        <div id="users-data">
+            <h4>Users Data</h4>
+        </div>
+
     </div>
     
-    <div id="users-data">
-        <h1>Users Data</h1>
-    </div>
+    
 
     <script src="./getUsers/users.js"></script>
+    <script src="./delete/delete.js"></script>
+    <script src="./updateuser/update.js"></script>
 </body>
 </html>
