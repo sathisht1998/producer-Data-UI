@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 function getAllUsers() {
     return __awaiter(this, void 0, void 0, function () {
-        var response, users, usersDataElement, error_1;
+        var response, users, usersTableBody_1, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -57,8 +57,12 @@ function getAllUsers() {
                 case 2:
                     users = _a.sent();
                     console.log('All users:', users);
-                    usersDataElement = document.getElementById('users-data');
-                    usersDataElement.textContent = JSON.stringify(users, null, 2);
+                    usersTableBody_1 = document.getElementById('user-table-body');
+                    usersTableBody_1.innerHTML = ''; // Clear existing table rows
+                    users.forEach(function (user) {
+                        var row = "\n                    <tr>\n                        <td>".concat(user._id, "</td>\n                        <td>").concat(user.username, "</td>\n                        <td>").concat(user.email, "</td>\n                        <td>\n                            <select onchange=\"handleAction(this)\">\n                                <option value=\"\" disabled selected>Select action</option>\n                                <option value=\"delete\">Delete</option>\n                                <option value=\"update\">Update</option>\n                            </select>\n                        </td>\n                    </tr>\n                ");
+                        usersTableBody_1.insertAdjacentHTML('beforeend', row);
+                    });
                     return [3 /*break*/, 4];
                 case 3:
                     console.error('Error fetching users:', response.statusText);

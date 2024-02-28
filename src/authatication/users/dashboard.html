@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,8 +38,35 @@
         .button:hover {
             background-color: #0056b3;
         }
+
+
+        #user-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #user-table th,
+        #user-table td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #user-table th {
+            background-color: #f2f2f2;
+        }
+
+        /* CSS for table rows */
+        #user-table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #user-table tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Dashboard</h2>
@@ -46,16 +74,28 @@
         <button class="button" id="delete-button">Delete</button>
         <button class="button" id="update-profile-button">Update</button>
 
-        <div id="users-data">
-            <h4>Users Data</h4>
-        </div>
-
+        <h1>User Management</h1>
+        <table id="user-table">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>options</th>
+                    <!-- <th>Actions</th> -->
+                </tr>
+            </thead>
+            <tbody id="user-table-body">
+                <!-- User data will be dynamically inserted here -->
+            </tbody>
+        </table>
     </div>
-    
-    
+
+
 
     <script src="./getUsers/users.js"></script>
     <script src="./delete/delete.js"></script>
     <script src="./updateuser/update.js"></script>
 </body>
+
 </html>

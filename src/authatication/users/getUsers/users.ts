@@ -16,9 +16,28 @@ async function getAllUsers() {
         if (response.ok) {
             const users = await response.json();
             console.log('All users:', users);
+            //New object only email 
 
-            const usersDataElement = document.getElementById('users-data');
-            usersDataElement.textContent = JSON.stringify(users, null, 2);            
+            const usersTableBody = document.getElementById('user-table-body');
+            usersTableBody.innerHTML = ''; // Clear existing table rows
+            
+            users.forEach(user => {
+                const row = `
+                    <tr>
+                        <td>${user._id}</td>
+                        <td>${user.username}</td>
+                        <td>${user.email}</td>
+                        <td>
+                            <select onchange="handleAction(this)">
+                                <option value="" disabled selected>Select action</option>
+                                <option value="delete">Delete</option>
+                                <option value="update">Update</option>
+                            </select>
+                        </td>
+                    </tr>
+                `;
+                usersTableBody.insertAdjacentHTML('beforeend', row);
+            });            
         } else {
             console.error('Error fetching users:', response.statusText);
         }
