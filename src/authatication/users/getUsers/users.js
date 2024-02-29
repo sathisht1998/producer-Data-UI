@@ -45,7 +45,6 @@ function getAllUsers() {
                             method: 'GET',
                             mode: 'cors',
                             credentials: 'include',
-                            //referrerPolicy: 'origin-when-cross-origin',
                             headers: {
                                 'Content-Type': 'application/json',
                             },
@@ -60,7 +59,7 @@ function getAllUsers() {
                     usersTableBody_1 = document.getElementById('user-table-body');
                     usersTableBody_1.innerHTML = ''; // Clear existing table rows
                     users.forEach(function (user) {
-                        var row = "\n                    <tr>\n                        <td>".concat(user._id, "</td>\n                        <td>").concat(user.username, "</td>\n                        <td>").concat(user.email, "</td>\n                        <td>\n                            <select onchange=\"handleAction(this)\">\n                                <option value=\"\" disabled selected>Select action</option>\n                                <option value=\"delete\">Delete</option>\n                                <option value=\"update\">Update</option>\n                            </select>\n                        </td>\n                    </tr>\n                ");
+                        var row = "\n                    <tr>\n                        <td>".concat(user._id, "</td>\n                        <td>").concat(user.username, "</td>\n                        <td>").concat(user.email, "</td>\n                        <td>\n                            <select ").concat(user.isCurrentUser ? '' : 'disabled', ">\n                                <option value=\"\" disabled selected>Select action</option>\n                                <option value=\"delete\">Delete</option>\n                                <option value=\"update\">Update</option>\n                            </select>\n                        </td>\n                    </tr>\n                ");
                         usersTableBody_1.insertAdjacentHTML('beforeend', row);
                     });
                     return [3 /*break*/, 4];

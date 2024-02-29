@@ -21,12 +21,13 @@ async function getAllUsers() {
             const usersTableBody = document.getElementById('user-table-body');
             usersTableBody.innerHTML = ''; // Clear existing table rows
             
-            users.forEach(user => {
+            users.forEach((user: { _id: any; username: any; email: any; }) => {
                 const row = `
                     <tr>
                         <td>${user._id}</td>
                         <td>${user.username}</td>
                         <td>${user.email}</td>
+                        
                         <td>
                             <select onchange="handleAction(this)">
                                 <option value="" disabled selected>Select action</option>
